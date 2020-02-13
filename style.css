@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+/*Make sure this is set to get the 1, 2 and 3 column layout across sizes. 
+As this includes content, padding and border, the values used for widths, heights, etc. might not give the intended results without this set
+*/
+*{
+  box-sizing:border-box;
+}
+
+/*prevent the calendar from growing any bigger than this*/
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  text-align:center;
+  padding:0 30px;
+}
+
+header{
+  text-align:center;
+}
+
+header>h2{
+  font-size:1rem;
+}
+
+
+.mood-container{
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.mood{
+  background:transparent;
+  border:none;
+  font-size:1.5rem;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  height:40px;
+  width:40px;
+  padding:0;
+}
+
+.mood:hover{
+  cursor:pointer;
+  border: white solid 1px;
+  border-radius:50%;
+}
+
+.mood.selected{
+  /*currentColor is a css variable-like value that takes the current color value and applies it to the value you specify*/
+  background:currentColor;
+  border-radius:100%;
+}
+
+.mood.selected > i{
+  color:black;
+}
+
+#mood-great{
+  color:violet;
+}
+
+#mood-happy{
+  color:pink
+}
+
+#mood-average{
+  color:lightgreen;
+}
+
+#mood-sad{
+  color:lightblue;
+}
+
+#mood-terrible{
+  color:coral;
+}
+
+.optionBox{
+  display:flex;
+  position:fixed;
+  flex-direction:column;
+  height:70px;
+  width:60px;
+  justify-content:space-between;
+  top:10px;
+  right:-20px;
+}
+
+.optionBtn{
+  border:none;
+  font-size:1rem;
+  padding:5px;
+  border-radius:5px;
+}
+
+.optionBtn:hover{
+  cursor:pointer;
+  border:black double 2px;
+}
+
+#randomBtn{
+  background:gold;
+}
+
+#clearBtn{
+  background:orange;
+}
+
+body{
+  padding:0;
+  margin:0;
+  font-family:'Ubuntu', sans-serif;
+}
+
+/*setting display as flex allows the calendar-like layout*/
+#calendar{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:flex-start;
+  margin-bottom:100px;
+}
+
+.months{
+  padding:10px;
+  width:33%;
+}
+
+/*for medium devices*/
+@media screen and (max-width: 756px) {
+	.months {
+		width: 50%;	
+	}
+}
+
+/*for small/mobile*/
+@media screen and (max-width: 480px) {
+	.months {
+		width: 100%;	
+	}
+}
+
+/*month names*/
+.months h3{
+  margin:5px 0;
+  text-align:center;
+}
+
+/*here is where we start to get more of the calendar layout as using flex sets the days and dates to a more chart-like layout*/
+.days_container, .week_days_container{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.days, .week_days{
+  margin-bottom:5px;
+  height: calc(100% / 7); /*divide the width of the available space by seven as this matches number of days/columns*/
+  width: calc(100% / 7);
+  text-align:center;
+}
+
+/*I first made a mistake here of putting a comma so it wasn't picking up that I wanted .circle in .days, but rather both .circle and .days, which will not give you the intended result*/
+.days .circle{
+  background:#E9E1E1;
+  display:inline-flex;
+  border-radius:50%;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  justify-content:center;
+  align-items:center;
+  font-size:10px;
+  width:20px;
+  height:20px;
+}
+
+.days:hover{
+  transform:scale(1.1);
+}
+
+footer{
+  display:flex;
+  padding:10px 0px 0px 0px;
+  font-size:14px;
+  align-items:center;
+  justify-content:space-between;
+  position:fixed;
+  bottom:0;
+  background-color:black;
+  color:white;
+  width:100vw;
+}
+
+footer > h2{
+  margin:0;
+  padding:0 10px;
+}
+
+#projectSrcBtn{
+  position:relative;
+  background:transparent;
+  color:white;
+  border-radius:20px;
+  text-decoration:none;
+  border:1px solid white;
+  padding:5px;
+  margin-bottom:10px;
+  right:20px;
+}
+
+@media (max-width: 400px){
+   footer{
+    display:block;
+  }
+  footer > h2{
+    font-size:1em;
+  }
+  #projectSrcBtn{
+    position:absolute;
+    top:5px;
+    font-size:0.5em;
+    right:20px;
+  }
+}
